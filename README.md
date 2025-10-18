@@ -46,6 +46,9 @@ src/main/java
     ├── Application.java          // 메인, 입출력
     ├── Calculator.java           // 계산
     │
+    ├── domain
+    │   └── Numbers.java         // 더하게 될 정수 유효성 확인
+    │
     └── compute
         ├── OperatorSplit.java    // 문자열을 분리하여 구분자 찾음
         ├── Operands.java         // 구분자를 통해 String -> List<int>로 변환
