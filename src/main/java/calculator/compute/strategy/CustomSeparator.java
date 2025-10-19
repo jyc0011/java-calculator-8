@@ -29,7 +29,7 @@ public class CustomSeparator implements Separator {
     @Override
     public String[] split(String input) {
         Matcher matcher = CUSTOM_SEPARATOR.matcher(input);
-        if (matcher.matches()) {
+        if (!matcher.matches()) {
             throw new IllegalArgumentException("유효하지 않은 커스텀 구분자 형식입니다.");
         }
         String custom = matcher.group(1);
