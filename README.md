@@ -71,8 +71,8 @@ src/main/java
         │
         └── strategy
             ├── separator.java    // 구분자 인터페이스
-            ├── default.java      // 기본 구분자
-            └── custom.java       // 커스텀 구분자
+            ├── defaultSeparator.java      // 기본 구분자
+            └── customSeparator.java       // 커스텀 구분자
 ```
 
 ## 추가 개선 사항
