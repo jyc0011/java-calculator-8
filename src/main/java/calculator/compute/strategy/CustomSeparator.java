@@ -3,11 +3,17 @@ package calculator.compute.strategy;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 커스텀 구분자(//...\\n...) 처리
+ */
 public class CustomSeparator implements Separator {
     private static final Pattern CUSTOM_SEPARATOR = Pattern.compile("//(.*)\\\\n(.*)");
     private static final Pattern INVALID_CUSTOM = Pattern.compile("(.*[ \t\n\r\f\u000B].*)|(.*\\d.*)");
 
-    private static void validateCustom(String custom) { // 커스텀 구분자의 유효성
+    /**
+     * 커스텀 구분자의 유효성 확인
+     */
+    private static void validateCustom(String custom) {
         if (custom == null || custom.isEmpty()) {
             throw new IllegalArgumentException("커스텀 구분자가 존재한다면 비어있을 수 없습니다.");
         }
@@ -16,7 +22,11 @@ public class CustomSeparator implements Separator {
         }
     }
 
-    private static void validateInput(String input, String separator) { // 입력 유효성
+    /**
+     * 입력의 유효성을 검증
+     */
+
+    private static void validateInput(String input, String separator) {
         String quotedDelimiter = Pattern.quote(separator);
         String consecutiveRegex = "(.*)" + quotedDelimiter + quotedDelimiter + "(.*)";
         String trailingRegex = "(.*)" + quotedDelimiter + "$";
@@ -26,6 +36,11 @@ public class CustomSeparator implements Separator {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * 커스텀 구분자를 기준으로 문자열 분리.
+     */
     @Override
     public String[] split(String input) {
         Matcher matcher = CUSTOM_SEPARATOR.matcher(input);
